@@ -1,0 +1,87 @@
+# Enable Vi like commands
+set -o vi
+
+# Directory where SDKs are installed (i.e: Android SDK)
+export ROOT_SDKS="$HOME/SDKs"
+
+# Edit PATH
+pathPrepend "$HOME/bin"
+if isMac; then
+  # Brew
+  pathPrepend "/usr/local/bin" "/usr/local/sbin"
+fi
+
+# Set default Editor
+export EDITOR=vi
+export VISUAL=vi
+
+# Color in prompt
+export CLICOLOR=1
+
+# Colors in LS
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+# Colors in Grep
+export GREP_OPTIONS='--color=auto'
+
+# Prefer US English and use UTF-8
+export LANG="en_US.UTF-8";
+export LC_ALL="en_US.UTF-8";
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=32768;
+export HISTFILESIZE=$HISTSIZE;
+export HISTCONTROL=ignoredups;
+# Make some commands not show up in history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X";
+
+# set some shell options
+shopt -s autocd			# faster cd'ing
+shopt -s cdspell		# fix typos when cd'ing
+shopt -s checkjobs		# list running jobs before exiting the shell
+shopt -s checkwinsize	# keep rows/cols updated
+shopt -s cmdhist		# multi-line cmds in same history entry
+shopt -s dirspell		# spell correct directory names
+shopt -s extglob		# extended pattern matching
+shopt -s globstar		# recursive globbing e.g. `echo **/*.txt`
+shopt -s histappend		# append... don't overwrite
+
+# SSH & GPG agent (if keychain is installed)
+if isInstalled keychain; then
+  eval $(keychain --quiet --eval --agents ssh,gpg --inherit any id_rsa)
+fi
+
+# Set JAVA_HOME 1.8
+if isMac; then
+  export JAVA8_HOME=$(/usr/libexec/java_home -v 1.8)
+  export JAVA_HOME=$JAVA8_HOME
+fi
+
+# Add GOROOT to path
+if isMac; then
+  pathAppend "/usr/local/opt/go/libexec/bin"
+fi
+
+# Add atom as default open in term
+if isMac; then
+  defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.github.atom;}'
+fi
+
+# Set GOPATH
+export GOPATH=$ROOT_SDKS/go
+
+# Colored man
+man() {
+    env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
+}

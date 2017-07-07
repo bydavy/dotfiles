@@ -1,0 +1,6 @@
+# In backup is stored backup of existing dotfiles
+backup
+# Secure directory shouldn't be versioned 
+secure
+.DS_Store
+.atom

@@ -1,0 +1,50 @@
+isMac() {
+  [[ $OSTYPE =~ darwin* ]]
+}
+
+isElCapitan() {
+  isMac && [[ $(sw_vers -productVersion) =~ 10.11 ]]
+}
+
+isHighSierra() {
+  isMax && [[ $(sw_vers -productVersion) =~ 10.13 ]]
+}
+
+isLinux() {
+  [[ $OSTYPE =~ linux-gnu ]]
+}
+
+isInstalled() {
+  which "$1" > /dev/null
+}
+
+pathAppend() {
+  for ARG in "$@"; do
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+      PATH="${PATH:+"$PATH:"}$ARG"
+    fi
+  done
+}
+
+pathPrepend() {
+  for ((i=$#; i>0; i--)); do
+    ARG=${!i}
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+      PATH="$ARG${PATH:+":$PATH"}"
+    fi
+  done
+}
+
+sourceIfReadPermission() {
+  for ARG in "$@"; do
+    [ -r "$ARG" ] && . "$ARG"
+  done
+}
+
+spushd() {
+  pushd "$@" > /dev/null
+}
+
+spopd() {
+  popd "$@" > /dev/null
+}
