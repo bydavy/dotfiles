@@ -2,10 +2,6 @@ isMac() {
   [[ $OSTYPE =~ darwin* ]]
 }
 
-isElCapitan() {
-  isMac && [[ $(sw_vers -productVersion) =~ 10.11 ]]
-}
-
 isHighSierra() {
   isMax && [[ $(sw_vers -productVersion) =~ 10.13 ]]
 }

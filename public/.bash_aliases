@@ -1,4 +1,3 @@
-alias ll="ls -ailh"
 alias grep='grep --color=auto'
 alias json="python -mjson.tool"
 
