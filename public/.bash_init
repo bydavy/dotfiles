@@ -3,13 +3,11 @@ set -o vi
 
 # Directory where SDKs are installed (i.e: Android SDK)
 export ROOT_SDKS="$HOME/SDKs"
+# Set GOPATH
+export GOPATH=$ROOT_SDKS/go
 
 # Edit PATH
 pathPrepend "$HOME/bin"
-if isMac; then
-  # Brew
-  pathPrepend "/usr/local/bin" "/usr/local/sbin"
-fi
 
 # Set default Editor
 export EDITOR=vi
@@ -54,24 +52,20 @@ if isInstalled keychain; then
   eval $(keychain --quiet --eval --agents ssh,gpg --inherit any id_rsa)
 fi
 
-# Set JAVA_HOME 1.8
 if isMac; then
+  # Brew
+  pathPrepend "/usr/local/bin" "/usr/local/sbin"
+
+  # Set JAVA_HOME 1.8
   export JAVA8_HOME=$(/usr/libexec/java_home -v 1.8)
   export JAVA_HOME=$JAVA8_HOME
-fi
 
-# Add GOROOT to path
-if isMac; then
+  # Add GOROOT to path
   pathAppend "/usr/local/opt/go/libexec/bin"
-fi
 
-# Add atom as default open in term
-if isMac; then
+  # Add atom as default open in term
   defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.github.atom;}'
 fi
-
-# Set GOPATH
-export GOPATH=$ROOT_SDKS/go
 
 # Colored man
 man() {
