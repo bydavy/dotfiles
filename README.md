@@ -31,3 +31,9 @@ Two files can be created and used as hooks to tweak by setting or unsetting what
 
 - `.bash_init_extra`: one of the first script executed on new bash session
 - `.bash_extra`: one of the last script executed on new bash sessions
+
+## Thanks to
+
+Here are a few projects that inspired me:
+
+- [mathiasbynens](https://github.com/mathiasbynens/dotfiles)

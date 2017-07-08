@@ -1,5 +1,3 @@
-# Thanks to https://github.com/mathiasbynens/dotfiles
-
 # Lazy way to make sure everything is up-to-date
 ~/.dotfiles/setup.sh
 
