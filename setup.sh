@@ -19,6 +19,7 @@ DOTFILES_ROOT=${DOTFILES_ROOT:-$BASEDIR}
 DOTFILES_BACKUP=${DOTFILES_BACKUP:-$DOTFILES_ROOT/backup/$NOW}
 DOTFILES_PUBLIC=${DOTFILES_PUBLIC:-$DOTFILES_ROOT/public}
 DOTFILES_SECURE=${DOTFILES_SECURE:-$DOTFILES_ROOT/secure}
+IGNORED_FILES="put_secure_dotfiles_here"
 
 cd "$DOTFILES_ROOT"
 
@@ -77,6 +78,9 @@ createLinks() {
 	local DST=$2
 
 	for FILE in $(ls -A "$SRC"); do
+		if [[ $IGNORED_FILES =~ (^|[[:space:]])"$FILE"($|[[:space:]]) ]]; then
+			continue;
+		fi
 		FILE_SRC=$SRC/$FILE
 		FILE_DST=$DST/$FILE
 	    if ! islinkOf "$FILE_SRC" "$FILE_DST"; then
