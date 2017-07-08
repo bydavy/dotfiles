@@ -81,15 +81,15 @@ createLinks() {
 		if [[ $IGNORED_FILES =~ (^|[[:space:]])"$FILE"($|[[:space:]]) ]]; then
 			continue;
 		fi
+
 		FILE_SRC=$SRC/$FILE
 		FILE_DST=$DST/$FILE
-	    if ! islinkOf "$FILE_SRC" "$FILE_DST"; then
-	    	if [ -e "$FILE_DST" ]; then
-	    		backup "$FILE_DST" "$DOTFILES_BACKUP"
-	    	fi
-
-	    	createLinkIfExists "$FILE_SRC" "$FILE_DST"
-	    fi
+		if ! islinkOf "$FILE_SRC" "$FILE_DST"; then
+			if [ -e "$FILE_DST" ]; then
+				backup "$FILE_DST" "$DOTFILES_BACKUP"
+			fi
+			createLinkIfExists "$FILE_SRC" "$FILE_DST"
+		fi
 	done
 }
 
