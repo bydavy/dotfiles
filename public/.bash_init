@@ -37,14 +37,10 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
 export MANPAGER="less -X";
 
 # set some shell options
-shopt -s autocd			# faster cd'ing
 shopt -s cdspell		# fix typos when cd'ing
-shopt -s checkjobs		# list running jobs before exiting the shell
 shopt -s checkwinsize	# keep rows/cols updated
 shopt -s cmdhist		# multi-line cmds in same history entry
-shopt -s dirspell		# spell correct directory names
 shopt -s extglob		# extended pattern matching
-shopt -s globstar		# recursive globbing e.g. `echo **/*.txt`
 shopt -s histappend		# append... don't overwrite
 
 # SSH & GPG agent (if keychain is installed)
