@@ -52,9 +52,9 @@ if isMac; then
   # Brew
   pathPrepend "/usr/local/bin" "/usr/local/sbin"
 
-  # Set JAVA_HOME 1.8
-  export JAVA8_HOME=$(/usr/libexec/java_home -v 1.8)
-  export JAVA_HOME=$JAVA8_HOME
+  # Set JAVA_HOME 1.9
+  export JAVA9_HOME=$(/usr/libexec/java_home -v 1.9 2>/dev/null)
+  export JAVA_HOME=$JAVA9_HOME
 
   # Add GOROOT to path
   pathAppend "/usr/local/opt/go/libexec/bin"
