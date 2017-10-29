@@ -43,6 +43,10 @@ shopt -s cmdhist		# multi-line cmds in same history entry
 shopt -s extglob		# extended pattern matching
 shopt -s histappend		# append... don't overwrite
 
+if isInstalled gpg-agent; then
+  eval $(gpg-agent --daemon --enable-ssh-support 2>/dev/null)
+fi
+
 # SSH & GPG agent (if keychain is installed)
 if isInstalled keychain; then
   eval $(keychain --quiet --eval --agents ssh,gpg --inherit any id_rsa)
