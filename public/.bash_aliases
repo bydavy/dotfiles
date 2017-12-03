@@ -16,7 +16,7 @@ if [ -x /usr/bin/colordiff ]; then
 fi
 
 if isMac; then
-	alias update="brew update && brew upgrade && brew cask update && brew cleanup && brew cask cleanup"
+	alias update="brew update && brew upgrade && brew cleanup && brew cask cleanup"
 
 	# Java
 	alias setjdk17='export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)'
