@@ -21,6 +21,7 @@ if isMac; then
 	# Java
 	alias setjdk17='export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)'
 	alias setjdk18='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
+	alias setjdk19='export JAVA_HOME=$(/usr/libexec/java_home -v 1.9)'
 
 	# Finder
 	alias showDotFiles='defaults write com.apple.finder AppleShowAllFiles YES;
