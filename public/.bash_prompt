@@ -3,6 +3,11 @@ if isMac; then
       . "$(brew --prefix)/etc/bash_completion"
   fi
 
+  # git auto complete commands and branch names
+  if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+  fi
+
   # Enable *, + next to branch name
   export GIT_PS1_SHOWDIRTYSTATE=1
 fi
