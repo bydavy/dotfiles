@@ -6,5 +6,6 @@ plugins=(
   colored-man-page
   docker
   git
+  profiles
   vi-mode
 )
