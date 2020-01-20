@@ -2,7 +2,7 @@
 set -e
 
 ###############################################################
-# This script installs all dotfiles containes in the project.
+# This script installs all dotfiles contained in the project.
 ###############################################################
 
 BASEDIR=$(dirname "$0")
