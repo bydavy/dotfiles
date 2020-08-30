@@ -98,3 +98,6 @@ createLinks "$DOTFILES_PUBLIC" "$HOME" &
 
 # Scan DOTFILES_SECURE dir to create links
 createLinks "$DOTFILES_SECURE" "$HOME" &
+
+# install powerlevel10k theme for zsh
+[ -f ~/powerlevel10k ] && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
