@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/bin:/usr/local/sbin:$PATH"
 export PATH="$PATH:$HOME/flutter/bin"
 export ANDROID_HOME="$HOME/Library/SDKs/android"
 

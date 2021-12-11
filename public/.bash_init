@@ -54,7 +54,7 @@ fi
 
 if isMac; then
   # Brew
-  pathPrepend "/usr/local/bin" "/usr/local/sbin"
+  pathPrepend "/usr/local/bin" "/usr/local/sbin" "/opt/homebrew/bin/"
 
   # Set JAVA_HOME 1.9
   export JAVA9_HOME=$(/usr/libexec/java_home -v 1.9 2>/dev/null)
